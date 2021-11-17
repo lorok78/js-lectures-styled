@@ -1,22 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+
+import { getRandomColor } from './helpers/getRandomColor';
+
+import { Button, Title } from './styles';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [titleColor, setTitleColor] = useState('#fff');
+  const [buttonBackground, setButtonBackground] = useState('#36394e')
+
+  const onClick = () => {
+    setTitleColor('#' + getRandomColor());
+    setButtonBackground('#' + getRandomColor());
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <Title color={titleColor}>JS Styled Component</Title>
+        <Button background={buttonBackground} onClick={() => onClick()}>Please Click Me</Button>
       </header>
     </div>
   );
